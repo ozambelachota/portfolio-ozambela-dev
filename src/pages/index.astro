@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+import cv from '../data/cv.json';
+
+const { basics, work, education, skills } = cv;
+---
+
+<Layout title={`${basics.name} - Portafolio`}>
+	<!-- Header / Hero -->
+	<header class="mb-12 border-b-2 border-ink/10 pb-8 border-dashed">
+		<h1 class="text-5xl md:text-6xl mb-2 text-ink rotate-[-1deg]">{basics.name}</h1>
+		<h2 class="text-2xl md:text-3xl text-ink-light mb-4 font-hand">{basics.label}</h2>
+		
+		<div class="flex flex-col md:flex-row gap-4 text-sm md:text-base opacity-80">
+			{basics.location && (
+				<span class="flex items-center gap-1">
+					📍 {basics.location.city}, {basics.location.region}
+				</span>
+			)}
+			<a href={`mailto:${basics.email}`} class="hover:underline hover:text-ink decoration-wavy underline-offset-4">
+				📧 {basics.email}
+			</a>
+            <span class="hidden md:inline">|</span>
+            <div class="flex gap-4">
+                {basics.profiles.map((profile) => (
+                    <a href={profile.url} target="_blank" rel="noopener noreferrer" class="hover:underline font-bold">
+                        🔗 {profile.network}
+                    </a>
+                ))}
+            </div>
+		</div>
+	</header>
+
+	<!-- Experience -->
+	<section class="mb-12">
+		<h3 class="text-3xl mb-6 underline decoration-wavy decoration-margin underline-offset-8">Experiencia Laboral</h3>
+		<div class="space-y-8">
+			{work.map((job) => (
+				<div class="relative pl-4 border-l-2 border-ink/20 hover:border-ink/50 transition-colors">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-paper border-2 border-ink"></div>
+					<div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
+						<h4 class="text-xl md:text-2xl font-bold">{job.name}</h4>
+						<span class="text-sm font-bold bg-ink/5 px-2 rounded -rotate-1 inline-block">
+							{job.startDate} — {job.endDate}
+						</span>
+					</div>
+					<p class="text-lg italic text-ink-light mb-2 font-hand">{job.position}</p>
+					<p class="mb-2 opacity-90">{job.summary}</p>
+					<ul class="list-disc list-inside text-sm space-y-1 opacity-80 pl-2">
+						{job.highlights.map((highlight) => (
+							<li>{highlight}</li>
+						))}
+					</ul>
+				</div>
+			))}
+		</div>
+	</section>
+
+	<!-- Education -->
+	<section class="mb-12">
+		<h3 class="text-3xl mb-6 underline decoration-wavy decoration-margin underline-offset-8">Educación</h3>
+		<div class="grid gap-6">
+			{education.map((edu) => (
+				<div class="border-2 border-ink/10 p-4 rounded bg-white/50 paper-shadow rotate-[0.5deg]">
+					<div class="flex justify-between items-baseline mb-1">
+						<h4 class="text-xl font-bold">{edu.institution}</h4>
+						<span class="text-sm opacity-60">{edu.startDate} — {edu.endDate}</span>
+					</div>
+					<p class="font-hand text-lg">{edu.area}</p>
+				</div>
+			))}
+		</div>
+	</section>
+
+	<!-- Skills -->
+	<section>
+		<h3 class="text-3xl mb-6 underline decoration-wavy decoration-margin underline-offset-8">Habilidades</h3>
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+			{skills.map((skillGroup) => (
+				<div>
+					<h4 class="text-xl mb-3 font-hand font-bold text-ink-light border-b border-ink/10 inline-block">{skillGroup.name}</h4>
+					<div class="flex flex-wrap gap-2">
+						{skillGroup.keywords.map((keyword) => (
+							<span class="px-3 py-1 bg-white border border-ink/20 rounded-full text-sm hover:rotate-2 transition-transform cursor-default paper-shadow">
+								{keyword}
+							</span>
+						))}
+					</div>
+				</div>
+			))}
+		</div>
+	</section>
+
+    <footer class="mt-20 pt-8 border-t border-ink/10 text-center opacity-60 text-sm font-hand">
+        <p>Hecho con Astro + Tailwindcss • Estilo Notebook Minimalista</p>
+        <p class="mt-2 text-xs font-mono">Harold Ozambela Chota © {new Date().getFullYear()}</p>
+    </footer>
+</Layout>

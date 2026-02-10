@@ -1,0 +1,111 @@
+{
+  "basics": {
+    "name": "Harold Ozambela Chota",
+    "label": "Desarrollador Full Stack",
+    "email": "ozambela.chota.harold@outlook.com",
+    "phone": "+51 992 698 167",
+    "location": {
+      "city": "Ucayali",
+      "countryCode": "PE",
+      "region": "Perú"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "ozambelachota",
+        "url": "https://github.com/ozambelachota"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "haroldozambela",
+        "url": "https://www.linkedin.com/in/haroldozambela/"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "ZZOFT",
+      "position": "Desarrollador de software",
+      "startDate": "2025-09",
+      "endDate": "Present",
+      "summary": "Desarrollo de sistemas de gestión de inventario, aserraderos y ventas. Integración CI/CD y optimización de trazabilidad.",
+      "highlights": [
+        "Sistema de gestión de inventario para YALI",
+        "Sistema de gestión de aserraderos CITE FORESTAL",
+        "Mantenimiento sistema de ventas REBO MARKET",
+        "Stack: Angular, PrimeNG, C# .NET, Oracle, Jenkins, Kubernetes, Docker"
+      ]
+    },
+    {
+      "name": "Jazani Consultora Ambiental S.A.C.",
+      "position": "Desarrollador de software",
+      "startDate": "2024-11",
+      "endDate": "2025-02",
+      "summary": "Implementación de sistemas para SENACE y mejoras en trazabilidad.",
+      "highlights": [
+        "Reducción del 15% en tiempos de procesamiento con interceptores Angular",
+        "Integración C# .NET con Oracle Database",
+        "Stack: Angular, PrimeNG, C# .NET, Oracle"
+      ]
+    },
+    {
+      "name": "HEROES CLUB",
+      "position": "Analista y desarrollador de software",
+      "startDate": "2024-04",
+      "endDate": "2024-07",
+      "summary": "Desarrollo de software de gestión académica.",
+      "highlights": [
+        "Aumento del 25% en eficiencia administrativa",
+        "Stack: React, MUI, TailwindCSS, Supabase, TanStack Query"
+      ]
+    },
+    {
+      "name": "Centro de Salud Nuevo Paraíso",
+      "position": "Desarrollador de software",
+      "startDate": "2024-04",
+      "endDate": "2024-07",
+      "summary": "Sistema de gestión de equipos médicos.",
+      "highlights": [
+        "Reducción de 30% en errores de inventario",
+        "Stack: React, Supabase"
+      ]
+    },
+    {
+      "name": "EXAFAM",
+      "position": "Desarrollador Freelance",
+      "startDate": "2024-01",
+      "endDate": "2024-12",
+      "summary": "Aplicación de gestión deportiva.",
+      "highlights": [
+        "Optimización de inscripción para 500 usuarios",
+        "Stack: React, TanStack Query, MUI, Supabase, Sonner"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universidad Nacional de Ucayali",
+      "area": "Ingeniería de Sistemas",
+      "startDate": "2019-04",
+      "endDate": "Present"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Frontend",
+      "keywords": ["React", "Angular", "Astro", "TailwindCSS", "TypeScript", "HTML", "CSS"]
+    },
+    {
+      "name": "Backend",
+      "keywords": ["Java", "Spring Boot", "C#", ".NET", "Node.js", "Express", "NestJS"]
+    },
+    {
+      "name": "Database",
+      "keywords": ["PostgreSQL", "MySQL", "SQL Server", "Oracle", "Supabase", "MongoDB"]
+    },
+    {
+      "name": "DevOps & Tools",
+      "keywords": ["Docker", "Kubernetes", "Jenkins", "Git", "Scrum"]
+    }
+  ]
+}
