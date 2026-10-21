@@ -24,6 +24,19 @@
   },
   "work": [
     {
+      "name": "CHANCE FINTECH",
+      "position": "Desarrollador Full Stack & Mobile",
+      "startDate": "2026-04",
+      "endDate": "Present",
+      "summary": "Desarrollo de ecosistema fintech integral: aplicación móvil nativa y arquitectura de microservicios con comunicación asíncrona por eventos y despliegue automatizado.",
+      "highlights": [
+        "Desarrollo de la aplicación móvil financiera en Android utilizando Kotlin y Jetpack Compose",
+        "Implementación de arquitectura de microservicios con Java 21 y Spring Boot 4, integrando RabbitMQ para mensajería y eventos asíncronos",
+        "Automatización de pipeline CI/CD utilizando Dokploy y Docker sobre servidores VPS con Ubuntu",
+        "Stack: Android (Kotlin, Jetpack Compose), Java 21, Spring Boot 4, RabbitMQ, PostgreSQL, Docker, Dokploy, Ubuntu VPS"
+      ]
+    },
+    {
       "name": "ZZOFT",
       "position": "Desarrollador de software",
       "startDate": "2025-09",
@@ -92,20 +105,20 @@
   ],
   "skills": [
     {
-      "name": "Frontend",
-      "keywords": ["React", "Angular", "Astro", "TailwindCSS", "TypeScript", "HTML", "CSS"]
+      "name": "Mobile & Frontend",
+      "keywords": ["Kotlin", "Android", "Jetpack Compose", "React", "Angular", "Astro", "TailwindCSS", "TypeScript"]
     },
     {
-      "name": "Backend",
-      "keywords": ["Java", "Spring Boot", "C#", ".NET", "Node.js", "Express", "NestJS"]
+      "name": "Backend & Microservicios",
+      "keywords": ["Java (Spring Boot 4)", "RabbitMQ", "C#", ".NET", "Node.js", "Express", "NestJS"]
     },
     {
       "name": "Database",
       "keywords": ["PostgreSQL", "MySQL", "SQL Server", "Oracle", "Supabase", "MongoDB"]
     },
     {
-      "name": "DevOps & Tools",
-      "keywords": ["Docker", "Kubernetes", "Jenkins", "Git", "Scrum"]
+      "name": "DevOps & Cloud",
+      "keywords": ["Dokploy", "Docker", "Kubernetes", "Ubuntu VPS", "Jenkins", "Git", "Scrum"]
     }
   ]
 }

@@ -5,94 +5,299 @@ import cv from '../data/cv.json';
 const { basics, work, education, skills } = cv;
 ---
 
-<Layout title={`${basics.name} - Portafolio`}>
-	<!-- Header / Hero -->
-	<header class="mb-12 border-b-2 border-ink/10 pb-8 border-dashed">
-		<h1 class="text-5xl md:text-6xl mb-2 text-ink rotate-[-1deg]">{basics.name}</h1>
-		<h2 class="text-2xl md:text-3xl text-ink-light mb-4 font-hand">{basics.label}</h2>
+<Layout title={`${basics.name} • Cuaderno de Ingeniería & Portafolio`}>
+	<!-- Physical notebook page container -->
+	<div class="max-w-4xl mx-auto notebook-sheet paper-elevation rounded-sm border border-stone-300/70 relative">
+		<!-- Top washi tape holding the sheet -->
+		<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-28 h-6 washi-tape rotate-[-1deg] z-20 pointer-events-none hidden sm:block"></div>
 		
-		<div class="flex flex-col md:flex-row gap-4 text-sm md:text-base opacity-80">
-			{basics.location && (
-				<span class="flex items-center gap-1">
-					📍 {basics.location.city}, {basics.location.region}
-				</span>
-			)}
-			<a href={`mailto:${basics.email}`} class="hover:underline hover:text-ink decoration-wavy underline-offset-4">
-				📧 {basics.email}
-			</a>
-            <span class="hidden md:inline">|</span>
-            <div class="flex gap-4">
-                {basics.profiles.map((profile) => (
-                    <a href={profile.url} target="_blank" rel="noopener noreferrer" class="hover:underline font-bold">
-                        🔗 {profile.network}
-                    </a>
-                ))}
-            </div>
-		</div>
-	</header>
+		<!-- Punch holes along left edge (classic 3-ring binder) -->
+		<div class="punch-hole absolute left-4 md:left-6 top-16 z-20 pointer-events-none"></div>
+		<div class="punch-hole absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-20 pointer-events-none"></div>
+		<div class="punch-hole absolute left-4 md:left-6 bottom-20 z-20 pointer-events-none"></div>
 
-	<!-- Experience -->
-	<section class="mb-12">
-		<h3 class="text-3xl mb-6 underline decoration-wavy decoration-margin underline-offset-8">Experiencia Laboral</h3>
-		<div class="space-y-8">
-			{work.map((job) => (
-				<div class="relative pl-4 border-l-2 border-ink/20 hover:border-ink/50 transition-colors">
-                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-paper border-2 border-ink"></div>
-					<div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
-						<h4 class="text-xl md:text-2xl font-bold">{job.name}</h4>
-						<span class="text-sm font-bold bg-ink/5 px-2 rounded -rotate-1 inline-block">
-							{job.startDate} — {job.endDate}
-						</span>
-					</div>
-					<p class="text-lg italic text-ink-light mb-2 font-hand">{job.position}</p>
-					<p class="mb-2 opacity-90">{job.summary}</p>
-					<ul class="list-disc list-inside text-sm space-y-1 opacity-80 pl-2">
-						{job.highlights.map((highlight) => (
-							<li>{highlight}</li>
-						))}
-					</ul>
-				</div>
-			))}
-		</div>
-	</section>
+		<!-- Notebook vertical red margin line -->
+		<div class="margin-line-red absolute top-0 bottom-0 left-12 md:left-20 w-px bg-red-400/60 pointer-events-none z-10"></div>
 
-	<!-- Education -->
-	<section class="mb-12">
-		<h3 class="text-3xl mb-6 underline decoration-wavy decoration-margin underline-offset-8">Educación</h3>
-		<div class="grid gap-6">
-			{education.map((edu) => (
-				<div class="border-2 border-ink/10 p-4 rounded bg-white/50 paper-shadow rotate-[0.5deg]">
-					<div class="flex justify-between items-baseline mb-1">
-						<h4 class="text-xl font-bold">{edu.institution}</h4>
-						<span class="text-sm opacity-60">{edu.startDate} — {edu.endDate}</span>
-					</div>
-					<p class="font-hand text-lg">{edu.area}</p>
-				</div>
-			))}
-		</div>
-	</section>
-
-	<!-- Skills -->
-	<section>
-		<h3 class="text-3xl mb-6 underline decoration-wavy decoration-margin underline-offset-8">Habilidades</h3>
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-			{skills.map((skillGroup) => (
-				<div>
-					<h4 class="text-xl mb-3 font-hand font-bold text-ink-light border-b border-ink/10 inline-block">{skillGroup.name}</h4>
-					<div class="flex flex-wrap gap-2">
-						{skillGroup.keywords.map((keyword) => (
-							<span class="px-3 py-1 bg-white border border-ink/20 rounded-full text-sm hover:rotate-2 transition-transform cursor-default paper-shadow">
-								{keyword}
+		<!-- Main page content -->
+		<main class="pl-16 md:pl-28 pr-6 md:pr-12 py-10 md:py-16 relative z-10">
+			<!-- Header / Hero Section -->
+			<header class="mb-14 pb-8 border-b border-dashed border-stone-300">
+				<div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+					<div>
+						<div class="inline-block mb-1">
+							<span class="ink-stamp-blue -rotate-1 text-xs">
+								✦ Portafolio de Ingeniería
 							</span>
-						))}
+						</div>
+						<h1 class="text-4xl sm:text-5xl md:text-6xl text-ink font-bold tracking-tight rotate-[-0.5deg]">
+							{basics.name}
+						</h1>
+						<p class="text-xl sm:text-2xl text-ink-light font-hand mt-1">
+							{basics.label}
+						</p>
+					</div>
+
+					<div class="flex flex-wrap items-center gap-2 pt-2 md:pt-4 no-print">
+						<button 
+							id="copy-email-btn"
+							data-email={basics.email}
+							class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-stone-300 rounded font-mono text-xs text-ink hover:bg-stone-50 active:scale-95 transition-all cursor-pointer shadow-xs"
+							title="Copiar correo al portapapeles"
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-stone-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+								<path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+							</svg>
+							<span id="copy-email-text">Copiar Email</span>
+						</button>
+						<button 
+							onclick="window.print()" 
+							class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-stone-300 rounded font-mono text-xs text-ink hover:bg-stone-50 active:scale-95 transition-all cursor-pointer shadow-xs"
+							title="Imprimir o guardar como PDF"
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-stone-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<polyline points="6 9 6 2 18 2 18 9"/>
+								<path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+								<rect width="12" height="8" x="6" y="14"/>
+							</svg>
+							<span>Imprimir / PDF</span>
+						</button>
 					</div>
 				</div>
-			))}
-		</div>
-	</section>
 
-    <footer class="mt-20 pt-8 border-t border-ink/10 text-center opacity-60 text-sm font-hand">
-        <p>Hecho con Astro + Tailwindcss • Estilo Notebook Minimalista</p>
-        <p class="mt-2 text-xs font-mono">Harold Ozambela Chota © {new Date().getFullYear()}</p>
-    </footer>
+				<!-- Contact & Profiles metadata -->
+				<div class="flex flex-wrap items-center gap-y-2 gap-x-4 text-xs sm:text-sm font-mono text-ink-muted">
+					{basics.location && (
+						<span class="inline-flex items-center gap-1">
+							<svg class="w-3.5 h-3.5 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+								<circle cx="12" cy="10" r="3"/>
+							</svg>
+							{basics.location.city}, {basics.location.region}
+						</span>
+					)}
+					<span>•</span>
+					<a 
+						href={`mailto:${basics.email}`} 
+						class="text-ink hover:text-blue-700 underline decoration-stone-300 hover:decoration-blue-500 underline-offset-4 transition-colors"
+					>
+						{basics.email}
+					</a>
+					<span>•</span>
+					{basics.phone && (
+						<span>{basics.phone}</span>
+					)}
+				</div>
+
+				<div class="flex flex-wrap gap-3 mt-3 pt-3 border-t border-stone-200/80">
+					{basics.profiles.map((profile) => (
+						<a 
+							href={profile.url} 
+							target="_blank" 
+							rel="noopener noreferrer" 
+							class="inline-flex items-center gap-1.5 text-xs font-mono font-medium px-2.5 py-1 bg-white/80 border border-stone-300/80 rounded hover:border-ink hover:text-ink transition-colors shadow-2xs"
+						>
+							<span class="text-stone-400">↗</span>
+							<span>{profile.network}</span>
+							<span class="text-stone-400 text-2xs">(@{profile.username})</span>
+						</a>
+					))}
+				</div>
+			</header>
+
+			<!-- Experiencia Laboral Section -->
+			<section class="mb-14">
+				<div class="flex items-baseline justify-between mb-8">
+					<h2 class="text-2xl sm:text-3xl text-ink font-bold hand-underline">
+						Experiencia Profesional
+					</h2>
+					<span class="font-mono text-2xs uppercase tracking-wider text-stone-400">
+						[ Registro Cronológico ]
+					</span>
+				</div>
+
+				<div class="space-y-10">
+					{work.map((job) => {
+						const isFeatured = job.name.toLowerCase().includes('chance');
+						return (
+							<article class={`relative p-5 sm:p-6 rounded border transition-all ${
+								isFeatured 
+									? 'bg-amber-50/40 border-amber-300/90 shadow-xs' 
+									: 'bg-white/60 border-stone-200/90 card-elevation'
+							}`}>
+								{isFeatured && (
+									<div class="absolute -top-3 right-6 washi-tape px-3 py-0.5 text-2xs font-mono font-bold text-amber-900 uppercase tracking-wider rotate-[1deg]">
+										★ Rol Reciente & Destacado
+									</div>
+								)}
+
+								<div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+									<div class="flex items-center gap-2">
+										<h3 class="text-xl sm:text-2xl font-bold text-ink">
+											{job.name}
+										</h3>
+										{isFeatured && (
+											<span class="ink-stamp-red text-3xs py-0 px-1.5">
+												FINTECH
+											</span>
+										)}
+									</div>
+									<time class="font-mono text-xs font-bold text-ink-muted bg-stone-100 border border-stone-200 px-2 py-0.5 rounded inline-block self-start sm:self-auto">
+										{job.startDate} — {job.endDate}
+									</time>
+								</div>
+
+								<p class="font-hand text-lg text-ink-light mb-3">
+									{job.position}
+								</p>
+
+								<p class="text-sm text-ink/90 leading-relaxed mb-4 max-w-3xl">
+									{job.summary}
+								</p>
+
+								<!-- Highlights list -->
+								<ul class="space-y-2 mb-4 text-xs sm:text-sm text-ink-light">
+									{job.highlights.map((highlight) => {
+										const isStack = highlight.startsWith("Stack:");
+										if (isStack) {
+											const stackItems = highlight.replace("Stack:", "").split(",").map(s => s.trim());
+											return (
+												<li class="pt-2 mt-2 border-t border-dashed border-stone-200">
+													<div class="flex flex-wrap items-center gap-1.5">
+														<span class="font-mono text-2xs font-bold uppercase tracking-wider text-stone-500 mr-1">
+															Stack:
+														</span>
+														{stackItems.map((tech) => (
+															<span class="inline-block font-mono text-2xs px-2 py-0.5 bg-white border border-stone-300 rounded text-stone-700 shadow-2xs hover:border-stone-500 transition-colors">
+																{tech}
+															</span>
+														))}
+													</div>
+												</li>
+											);
+										}
+										return (
+											<li class="flex items-start gap-2">
+												<span class="text-amber-700 font-bold select-none leading-5">›</span>
+												<span class="leading-relaxed">{highlight}</span>
+											</li>
+										);
+									})}
+								</ul>
+							</article>
+						);
+					})}
+				</div>
+			</section>
+
+			<!-- Habilidades Section -->
+			<section class="mb-14">
+				<div class="flex items-baseline justify-between mb-8">
+					<h2 class="text-2xl sm:text-3xl text-ink font-bold hand-underline">
+						Competencias Técnicas
+					</h2>
+					<span class="font-mono text-2xs uppercase tracking-wider text-stone-400">
+						[ Stack & Especialidades ]
+					</span>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+					{skills.map((skillGroup, idx) => (
+						<div class="bg-white/70 border border-stone-200 p-5 rounded card-elevation flex flex-col justify-between">
+							<div>
+								<div class="flex items-center justify-between border-b border-dashed border-stone-200 pb-2 mb-3">
+									<h3 class="font-hand text-xl font-bold text-ink">
+										{skillGroup.name}
+									</h3>
+									<span class="font-mono text-3xs text-stone-400 uppercase">
+										Grupo 0{idx + 1}
+									</span>
+								</div>
+
+								<div class="flex flex-wrap gap-1.5">
+									{skillGroup.keywords.map((keyword) => (
+										<span class="font-mono text-xs px-2.5 py-1 bg-stone-50 border border-stone-300/80 rounded text-stone-800 shadow-2xs hover:-translate-y-0.5 hover:bg-white hover:border-ink transition-transform cursor-default">
+											{keyword}
+										</span>
+									))}
+								</div>
+							</div>
+						</div>
+					))}
+				</div>
+			</section>
+
+			<!-- Educación Section -->
+			<section class="mb-14">
+				<div class="flex items-baseline justify-between mb-8">
+					<h2 class="text-2xl sm:text-3xl text-ink font-bold hand-underline">
+						Formación Académica
+					</h2>
+					<span class="font-mono text-2xs uppercase tracking-wider text-stone-400">
+						[ Universidad ]
+					</span>
+				</div>
+
+				<div class="grid grid-cols-1 gap-4">
+					{education.map((edu) => (
+						<div class="bg-white/70 border border-stone-200 p-5 rounded card-elevation flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+							<div>
+								<h3 class="text-lg sm:text-xl font-bold text-ink">
+									{edu.institution}
+								</h3>
+								<p class="font-hand text-base text-ink-light">
+									{edu.area}
+								</p>
+							</div>
+							<time class="font-mono text-xs font-bold text-stone-500 bg-stone-100 border border-stone-200 px-2.5 py-1 rounded self-start sm:self-auto">
+								{edu.startDate} — {edu.endDate}
+							</time>
+						</div>
+					))}
+				</div>
+			</section>
+
+			<!-- Footer / Colophon -->
+			<footer class="pt-8 border-t border-stone-300/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-ink-muted">
+				<div class="flex items-center gap-2">
+					<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+					<span>Notas de ingeniería de {basics.name} • {new Date().getFullYear()}</span>
+				</div>
+				<a 
+					href="#top" 
+					class="hover:text-ink underline decoration-stone-300 hover:decoration-stone-600 underline-offset-4 transition-colors no-print"
+				>
+					↑ Volver al inicio
+				</a>
+			</footer>
+		</main>
+	</div>
+
+	<!-- Copy Email Toast & Script -->
+	<script>
+		const copyBtn = document.getElementById('copy-email-btn');
+		const copyText = document.getElementById('copy-email-text');
+
+		if (copyBtn && copyText) {
+			copyBtn.addEventListener('click', async () => {
+				const email = copyBtn.getAttribute('data-email');
+				if (!email) return;
+
+				try {
+					await navigator.clipboard.writeText(email);
+					const originalText = copyText.textContent;
+					copyText.textContent = '¡Copiado!';
+					copyBtn.classList.add('bg-emerald-50', 'text-emerald-700', 'border-emerald-300');
+
+					setTimeout(() => {
+						copyText.textContent = originalText;
+						copyBtn.classList.remove('bg-emerald-50', 'text-emerald-700', 'border-emerald-300');
+					}, 2000);
+				} catch (err) {
+					console.error('Error al copiar correo:', err);
+				}
+			});
+		}
+	</script>
 </Layout>

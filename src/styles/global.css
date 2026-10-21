@@ -3,37 +3,144 @@
 @theme {
   --font-hand: 'Patrick Hand', cursive;
   --font-mono: 'Courier Prime', monospace;
+  --font-sans: 'Lora', Georgia, serif;
   
-  --color-paper: #fdfbf7;
-  --color-line: #e1e1e1;
-  --color-margin: #ff9999;
-  --color-ink: #2c3e50;
-  --color-ink-light: #5d6d7e;
+  --color-paper: #faf7f2;
+  --color-paper-desk: #eeece6;
+  --color-paper-card: #ffffff;
+  --color-paper-note: #fefce8;
+  --color-line: rgba(220, 212, 198, 0.65);
+  --color-margin: #f87171;
+  --color-ink: #1a2433;
+  --color-ink-light: #3e4c5e;
+  --color-ink-muted: #64748b;
 }
 
 @layer base {
   body {
-    @apply bg-paper text-ink font-mono antialiased;
-    background-image: linear-gradient(var(--color-line) 1px, transparent 1px);
-    background-size: 100% 2rem; /* Line height 2rem (32px) */
-    background-attachment: local;
-    line-height: 2rem;
+    background-color: var(--color-paper-desk);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.625;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-hand text-ink font-bold;
+    font-family: var(--font-hand);
+    color: var(--color-ink);
+    font-weight: 700;
   }
 }
 
-.paper-shadow {
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05), 0 0 40px rgba(0,0,0,0.02) inset;
+/* Notebook paper sheet */
+.notebook-sheet {
+  background-color: var(--color-paper);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 31px,
+    var(--color-line) 31px,
+    var(--color-line) 32px
+  );
+  background-size: 100% 32px;
+  background-position: 0 8px;
 }
 
-.handwritten {
-  @apply font-hand;
+/* Paper elevation shadow */
+.paper-elevation {
+  box-shadow: 
+    0 1px 3px rgba(35, 25, 10, 0.05),
+    0 8px 24px rgba(35, 25, 10, 0.07),
+    0 24px 48px rgba(35, 25, 10, 0.04);
 }
 
-/* Notebook margin line */
-.margin-line {
-  @apply fixed top-0 bottom-0 left-8 md:left-16 w-px bg-margin z-0 pointer-events-none;
+.card-elevation {
+  box-shadow: 
+    0 1px 2px rgba(40, 30, 15, 0.05),
+    0 4px 12px rgba(40, 30, 15, 0.04);
+}
+
+/* Binder hole punch */
+.punch-hole {
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: #ded7c8;
+  box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.28), 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+/* Washi tape effect */
+.washi-tape {
+  background-color: rgba(254, 240, 138, 0.85);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-left: 2px dashed rgba(202, 138, 4, 0.35);
+  border-right: 2px dashed rgba(202, 138, 4, 0.35);
+}
+
+.washi-tape-cyan {
+  background-color: rgba(207, 250, 254, 0.85);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-left: 2px dashed rgba(8, 145, 178, 0.35);
+  border-right: 2px dashed rgba(8, 145, 178, 0.35);
+}
+
+/* Ink stamp */
+.ink-stamp-red {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.15rem 0.5rem;
+  border: 1.5px dashed #b91c1c;
+  color: #b91c1c;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ink-stamp-blue {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.15rem 0.5rem;
+  border: 1.5px dashed #1d4ed8;
+  color: #1d4ed8;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Handwritten highlight underline */
+.hand-underline {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #f87171;
+  text-underline-offset: 6px;
+}
+
+/* Print optimizations */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .notebook-sheet {
+    background-image: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .punch-hole, .margin-line-red {
+    display: none !important;
+  }
 }
